@@ -1,0 +1,269 @@
+* {
+    font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+   margin: 0;
+}
+
+
+
+
+form{
+    text-align: left;
+    display: flex;
+    margin: 0;
+   
+    
+    
+}
+
+
+
+.gen-search{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+table {
+    margin: auto;
+   
+    
+    width: 97%;
+    table-layout: auto;
+    border: solid;
+    border-color: rgb(8, 66, 83);
+    
+   
+    border-collapse: collapse;
+   
+}
+
+.upperhead{
+    color: black;
+    background: white;
+    font-size: 25px;
+}
+th {
+    background: rgb(8, 66, 83) ;
+    border: solid;
+    border-color: rgb(8, 66, 83);
+    color: white;
+   
+    text-align: center;
+}
+
+td {
+    border: solid;
+    border-color: rgb(8, 66, 83);
+    text-indent: 10px;
+    text-align: left;
+}
+ 
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px; 
+    text-align: center;
+}
+.modal-content {
+    background-color:#ffffff;
+    margin: 5% auto; 
+    padding: 20px;
+    border:none;
+    border-radius: 5px;
+    width: 30%; 
+    box-shadow:  1px 2px 3px 4px rgba(20,20,20,0.4);
+}
+.close {
+    color: #aaa;
+    float: right;
+    
+
+    font-size: 28px;
+    font-weight: bold;
+  
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+.error-message {
+    color: red;
+    display: none;
+}
+
+
+
+  .searchTble {
+    margin: 50px 500px 50px 500px;
+  }
+
+.sidedash-container {
+    background: grey;
+    height: 100%;
+    width: 200px;
+}
+  
+.whole-container{
+    display: flex ;
+}
+
+.right-section {
+  
+   
+    padding: 20px 0 0 0;
+    margin: 15px 27px;
+    border: solid;
+    border-color: rgb(8, 66, 83);
+    border-radius: 5px;
+   
+}
+
+.right-container {
+  
+    max-width: fit-content;
+    margin-inline: auto;
+    margin: 0;
+    
+}
+
+
+
+
+
+.sidedash-container h2 {
+    text-align: center;
+    padding: 40px;
+}
+
+.sidedash-container a {
+    display: block;
+    color: white;
+    padding: 30px;
+    text-decoration: none;
+    margin: 20px 0 0 0;
+  
+}
+
+.sidedash-container a:hover {
+    background-color: #575757;
+}
+
+form .tin2{
+    margin-left: 59px;
+    
+}
+
+
+.lower-input {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    
+}
+
+
+
+
+
+form {
+    margin: 0 0 0 50px;
+}
+
+.searchID {
+    margin: 0 0 0 24px;
+}
+
+.searchbtnID {
+    margin: 0 0 0 -5px;
+}
+
+.add {
+    margin: 0 0 0 20px;
+}
+
+.navbar h2 {
+    text-align: left;
+    padding: 0 0 0 20px;
+    color: white;
+  
+    
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgb(8, 66, 83);
+    padding: 10px;
+    color: white;
+    width: 1150px;
+    height: 70px;
+   margin: auto;
+}
+
+
+.table-title{
+    text-align: center;
+}
+
+.navbar-left {
+    display: flex;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 2px;
+    margin-left: 0;
+}
+
+.admin-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.timestamp {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.supplierLabel {
+    margin-left: 33px;
+}
+
+.dateLabel {
+    margin-left: 25px;
+}
+
+.sourceDocLabel {
+    margin-left: 28px;
+}
+
+.tinLabel {
+    margin-left: 47px;
+}

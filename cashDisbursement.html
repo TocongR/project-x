@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Disbursement Journal</title>
+    <link rel="stylesheet" href="cashDisbursement.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/312542450_166148502693840_4233176037075043069_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeE3Npjpai4sFFDX-Cw8gH2w979Kn0cyel33v0qfRzJ6XXQgP7AkGPMJHubAL35Nu6IJCQwZ6AUSWAz-fAY3uM90&_nc_ohc=hp6iJ9hiODYQ7kNvgHOPsOR&_nc_ht=scontent.fceb2-2.fna&oh=00_AYBze5nOCu7Srqa-SFQaKBfnyKyOGHeV1OOKZqnoXh6FDA&oe=6691785E">
+</head> 
+<body> 
+   
+    <div class="whole-container">
+        
+    <div class="sidedash-container">
+        <a href="home.html">Home</a>
+        <a href="customerEntry.html">Customer Data Entry</a>
+        <a href="cashReceipts.html">Cash Receipts Journal</a>
+        <a href="salesJournal.html">Sales Journal</a>
+        <a href="supplierEntry.html">Supplier Data Entry</a>
+        <a href="pettyCash.html">Petty Cash Journal</a>
+        <a href="generalJournal.html">General Journal</a>
+ 
+    </div>
+    <div class="right-container"> 
+        <nav class="navbar">
+            <div class="navbar-left">
+              <h2>Cash Disbursement Journal(Paid Payables)</h2>
+            </div>
+            <div class="navbar-right">
+                <div class="timestamp" id="timestamp"></div>
+                <div class="profile">
+                   
+                    <span class="admin-name">RCube</span>
+                    <img src="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/312542450_166148502693840_4233176037075043069_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeE3Npjpai4sFFDX-Cw8gH2w979Kn0cyel33v0qfRzJ6XXQgP7AkGPMJHubAL35Nu6IJCQwZ6AUSWAz-fAY3uM90&_nc_ohc=hp6iJ9hiODYQ7kNvgHOPsOR&_nc_ht=scontent.fceb2-2.fna&oh=00_AYBze5nOCu7Srqa-SFQaKBfnyKyOGHeV1OOKZqnoXh6FDA&oe=6691785E" alt="Admin Profile" class="profile-pic">
+                </div>
+            </div>
+        </nav>
+      
+       
+    <div class="right-section">
+       
+    <form>
+        
+        <div id="search-result">
+            <div class="upperInput">
+        <label for="customer">Customer</label>
+        <input type="text" class="customer" name="customer" placeholder="" required>
+        <label for="reference" class="referenceLabel">Reference</label>
+        <input type="text" class="reference" name="reference" placeholder='' required>
+        </div>
+        <label for="datePaid">Date Paid</label>
+        <input type="date" class="datePaid" name="datePaid" placeholder="" required>
+        <label for="sourceDoc" class="sourceDocLabel">Source Doc</label>
+        <input type="text" name="sourceDoc" class="sourceDoc" placeholder="">
+       
+        <label for="discount" class="discountLabel">Discount</label>
+        <input type="tel" class="discount" name="discount" placeholder="">
+       
+        <label for="type" class="particularsLabel">Particulars</label>
+        <input type="text" class="particulars" name="particulars" placeholder="">
+        <div class="lower-input">
+        <label for="amount" class="amountLabel">Amount</label>
+        <input type="text" class="amount" name="amount" placeholder="">
+        <label for="wTax" class="wTaxLabel">W/Tax</label>
+        <input type="text" class="wTax" name="wTax" placeholder="">
+    
+    
+        <label for="searchID" class="searchID">ID Search</label>
+        <input type="text" name="searchID" id="searchQuery" class="search" placeholder="Search..">
+        <button class="searchbtnID" type="button" onclick="searchData()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="add" type="button" onclick="addData()">Submit</button>
+            <button class="update" type="button">Update</button>
+            <button class="delete" type="button">Delete</button>
+        </div>
+        </div>
+       
+        <div class="id-search">
+            <br>
+     
+    </div>
+    </form><br>
+    
+</div>
+
+    <div class="tableBg">
+    <table>
+        <div class="gen-search">
+        <input type="text" name="search" id="searchGenQuery" class="search" placeholder="Search..">
+        <button class="searchbtn" type="button" onclick="searchGenData()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="date" id="startDate" placeholder="Start Date">
+        <input type="date" id="endDate" placeholder="End Date">
+        <button class="searchDateBtn" type="button" onclick="searchDateRange()">Search</button>
+        <button class="resetTableBtn" type="button" onclick="resetTable()">Reset</button>
+    </div>
+    <div class="table-title">
+   
+    </div>
+    <thead class="upperhead">
+        <th colspan="8" class="upperhead">List of Paid Payables</th>
+    </thead>
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Reference</th>
+                <th>Date Paid</th>
+                <th>Source Doc</th>
+                <th>Discount</th>
+                <th>Particulars</th>
+                <th>Amount</th>
+                <th>W/tax</th>
+            </tr>
+        </thead>
+        <tbody id="table_data"></tbody>
+    
+    </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+   
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Please enter your password to delete this data:</p>
+            <input type="password" id="modalPassword" placeholder="Password">
+            <button  id="modalSubmit" type="button">Enter</button>
+            <div class="error-message" id="errorMessage">Incorrect password.</div>
+        </div>
+    </div>
+
+
+    <script src="cashDisbursement.js"></script>
+</body>
+</html>

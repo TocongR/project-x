@@ -1,0 +1,247 @@
+APPSCRIPT GS:
+
+const app = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1bul4WYtSWN5-YKZnFv5ZPbOM1YWs0PCXxtmNO1g1hz4/edit?gid=0#gid=0");
+
+const customerDataEntry = app.getSheetByName("Customer Data Entry");
+const salesJournal = app.getSheetByName("Sales Journal");
+const supplierDataEntry = app.getSheetByName("Supplier Data Entry"); 
+const generalJournal = app.getSheetByName("General Journal");
+const cashReceiptsJournal = app.getSheetByName("Cash Receipts Journal");
+const cashDisbursementJournal = app.getSheetByName("Cash Disbursement Journal");
+const pettyCashJournal = app.getSheetByName("Petty Cash Journal");
+
+function doGet(req) {
+  
+    if (req.parameter.del) {
+
+       //Petty Cash Journal delData
+      if (req.parameter.pettyCashId) {
+
+        pettyCashJournal.deleteRow(parseInt(req.parameter.pettyCashId));
+
+       //Cash Disbursement Journal delData
+      } else if (req.parameter.cashDisbursementId) {
+
+        cashDisbursementJournal.deleteRow(parseInt(req.parameter.cashDisbursementId));
+
+     //Cash Receipts Journal delData
+      } else if (req.parameter.cashReceiptId) {
+
+        cashReceiptsJournal.deleteRow(parseInt(req.parameter.cashReceiptId));
+
+     //General Journal delData
+      } else if (req.parameter.generalId) {
+
+        generalJournal.deleteRow(parseInt(req.parameter.generalId));
+
+      //Supplier Data Entry  delData
+      } else if (req.parameter.supplierId) {
+
+        supplierDataEntry.deleteRow(parseInt(req.parameter.supplierId));
+
+      //Customer Data Entry delData
+      } else if (req.parameter.customerId) {
+
+        customerDataEntry.deleteRow(parseInt(req.parameter.customerId));
+
+      //Sales Journal delData
+      } else if (req.parameter.salesId) {
+
+        salesJournal.deleteRow(parseInt(req.parameter.salesId));
+
+      } else {
+
+        return ContentService.createTextOutput("Canceled Deletion");
+
+      }
+      return ContentService.createTextOutput("Data Deleted!");
+
+    } else if (req.parameter.update) {
+
+       if (req.parameter.pettyCashId) {
+
+        let pettyCashId = parseInt(req.parameter.pettyCashId);
+
+        pettyCashJournal.getRange(pettyCashId, 2).setValue(req.parameter.supplier);
+        pettyCashJournal.getRange(pettyCashId, 3).setValue(req.parameter.amount);
+        pettyCashJournal.getRange(pettyCashId, 4).setValue(req.parameter.sourceDoc);
+        pettyCashJournal.getRange(pettyCashId, 5).setValue(req.parameter.particulars);
+        pettyCashJournal.getRange(pettyCashId, 6).setValue(req.parameter.discount);
+        pettyCashJournal.getRange(pettyCashId, 7).setValue(req.parameter.date);
+        pettyCashJournal.getRange(pettyCashId, 8).setValue(req.parameter.account);
+        pettyCashJournal.getRange(pettyCashId, 9).setValue(req.parameter.wTax);
+        pettyCashJournal.getRange(pettyCashId, 10).setValue(req.parameter.tin);
+
+       //Cash Disbursement Journal updateData
+      } else if (req.parameter.cashDisbursementId) {
+
+        let cashDisbursementId = parseInt(req.parameter.cashDisbursementId);
+
+        cashDisbursementJournal.getRange(cashDisbursementId, 2).setValue(req.parameter.customer);
+        cashDisbursementJournal.getRange(cashDisbursementId, 3).setValue(req.parameter.reference);
+        cashDisbursementJournal.getRange(cashDisbursementId, 4).setValue(req.parameter.datePaid);
+        cashDisbursementJournal.getRange(cashDisbursementId, 5).setValue(req.parameter.sourceDoc);
+        cashDisbursementJournal.getRange(cashDisbursementId, 6).setValue(req.parameter.discount);
+        cashDisbursementJournal.getRange(cashDisbursementId, 7).setValue(req.parameter.particulars);
+        cashDisbursementJournal.getRange(cashDisbursementId, 8).setValue(req.parameter.amount);
+        cashDisbursementJournal.getRange(cashDisbursementId, 9).setValue(req.parameter.wTax);
+
+      //Cash Receipts Journal updateData
+      } else if (req.parameter.cashReceiptId) {
+
+        let cashReceiptId = parseInt(req.parameter.cashReceiptId);
+
+        cashReceiptsJournal.getRange(cashReceiptId, 2).setValue(req.parameter.customer);
+        cashReceiptsJournal.getRange(cashReceiptId, 3).setValue(req.parameter.reference);
+        cashReceiptsJournal.getRange(cashReceiptId, 4).setValue(req.parameter.datePaid);
+        cashReceiptsJournal.getRange(cashReceiptId, 5).setValue(req.parameter.sourceDoc);
+        cashReceiptsJournal.getRange(cashReceiptId, 6).setValue(req.parameter.discount);
+        cashReceiptsJournal.getRange(cashReceiptId, 7).setValue(req.parameter.particulars);
+        cashReceiptsJournal.getRange(cashReceiptId, 8).setValue(req.parameter.amount);
+        cashReceiptsJournal.getRange(cashReceiptId, 9).setValue(req.parameter.wTax);
+      
+      //General Journal updateData
+     } else if (req.parameter.generalId) {
+
+        let generalId = parseInt(req.parameter.generalId);
+
+        generalJournal.getRange(generalId, 2).setValue(req.parameter.supplier);
+        generalJournal.getRange(generalId, 3).setValue(req.parameter.amount);
+        generalJournal.getRange(generalId, 4).setValue(req.parameter.sourceDoc);
+        generalJournal.getRange(generalId, 5).setValue(req.parameter.particulars);
+        generalJournal.getRange(generalId, 6).setValue(req.parameter.termDays);
+        generalJournal.getRange(generalId, 7).setValue(req.parameter.date);
+        generalJournal.getRange(generalId, 8).setValue(req.parameter.account);
+        generalJournal.getRange(generalId, 9).setValue(req.parameter.tin);
+
+      //Supplier Data Entry updateData
+      } else if (req.parameter.supplierId) {
+
+        let supplierId = parseInt(req.parameter.supplierId);
+
+        supplierDataEntry.getRange(supplierId, 2).setValue(req.parameter.tin);
+        supplierDataEntry.getRange(supplierId, 3).setValue(req.parameter.name);
+        supplierDataEntry.getRange(supplierId, 4).setValue(req.parameter.address);
+        supplierDataEntry.getRange(supplierId, 5).setValue(req.parameter.registration);
+        supplierDataEntry.getRange(supplierId, 6).setValue(req.parameter.contact);
+        supplierDataEntry.getRange(supplierId, 7).setValue(req.parameter.date);
+
+      //Customer Data Entry updateData
+      } else if (req.parameter.customerId) {
+
+        let customerId = parseInt(req.parameter.customerId);
+
+        customerDataEntry.getRange(customerId, 2).setValue(req.parameter.tin);
+        customerDataEntry.getRange(customerId, 3).setValue(req.parameter.name);
+        customerDataEntry.getRange(customerId, 4).setValue(req.parameter.address);
+        customerDataEntry.getRange(customerId, 5).setValue(req.parameter.registration);
+        customerDataEntry.getRange(customerId, 6).setValue(req.parameter.contact);
+        customerDataEntry.getRange(customerId, 7).setValue(req.parameter.date);
+
+       //Sales Journal updateData
+      } else if (req.parameter.salesId) {
+
+        let salesId = parseInt(req.parameter.salesId);
+
+        salesJournal.getRange(salesId, 2).setValue(req.parameter.customer);
+        salesJournal.getRange(salesId, 3).setValue(req.parameter.sourceDoc);
+        salesJournal.getRange(salesId, 4).setValue(req.parameter.termDays);
+        salesJournal.getRange(salesId, 5).setValue(req.parameter.date);
+        salesJournal.getRange(salesId, 6).setValue(req.parameter.amount);
+        salesJournal.getRange(salesId, 7).setValue(req.parameter.type);
+        salesJournal.getRange(salesId, 8).setValue(req.parameter.particulars);
+        salesJournal.getRange(salesId, 9).setValue(req.parameter.discount);
+        salesJournal.getRange(salesId, 10).setValue(req.parameter.tin);
+
+      } else {
+        return ContentService.createTextOutput("No valid ID for update");
+      }
+      return ContentService.createTextOutput("Data Updated!");
+
+    } else {
+
+      //Petty Cash Journal sendData to JS
+      let dataPc = pettyCashJournal.getDataRange().getValues();
+      dataPc.shift();
+
+      //Cash Disbursement Journal sendData to JS
+      let dataCd = cashDisbursementJournal.getDataRange().getValues();
+      dataCd.shift();
+
+      //Cash Receipts Journal sendData to JS
+      let dataCr = cashReceiptsJournal.getDataRange().getValues();
+      dataCr.shift();
+
+      //Customer Data Entry sendData to JS
+      let dataCde = customerDataEntry.getDataRange().getValues();
+      dataCde.shift();  
+      
+      //Supplier Data Entry sendData to JS
+      let dataSde = supplierDataEntry.getDataRange().getValues();
+      dataSde.shift();
+
+      //Sales Journal sendData to JS
+      let dataSj = salesJournal.getDataRange().getValues();
+      dataSj.shift();  
+
+      //General Journal sendData to JS
+      let dataGj = generalJournal.getDataRange().getValues();
+      dataGj.shift();  
+
+      let obj = {
+        cdeData: dataCde,
+        sdeData:dataSde,
+        sjData: dataSj,
+        gjData: dataGj,
+        crData: dataCr,
+        cdData: dataCd,
+        pcData: dataPc
+      }
+
+      return ContentService.createTextOutput(JSON.stringify(obj));
+    }
+}
+  
+function doPost(req) {
+  
+    let datas = JSON.parse(req.postData.contents);
+
+    if (datas.supplier && datas.amount && datas.sourceDoc && datas.particulars && datas.discount && datas.date && datas.account && datas.wTax && datas.tin) {
+
+      pettyCashJournal.appendRow(["=row()", datas.supplier, datas.amount, datas.sourceDoc, datas.particulars, datas.discount, datas.date, datas.account, datas.wTax, datas.tin]);
+
+    } else if (datas.customerCd && datas.reference && datas.datePaid && datas.sourceDoc && datas.discount && datas.particulars && datas.amount && datas.wTax) {
+
+      cashDisbursementJournal.appendRow(["=row()", datas.customerCd, datas.reference, datas.datePaid, datas.sourceDoc, datas.discount, datas.particulars, datas.amount, datas.wTax]);
+
+    //Cash Receipts Journal recieveData from JS
+    } else if (datas.customerCr && datas.reference && datas.datePaid && datas.sourceDoc && datas.discount && datas.particulars && datas.amount && datas.wTax) {
+
+      cashReceiptsJournal.appendRow(["=row()", datas.customerCr, datas.reference, datas.datePaid, datas.sourceDoc, datas.discount, datas.particulars, datas.amount, datas.wTax]);
+
+    //General Journal recieveData from JS
+    } else if (datas.supplierGj && datas.amountGj && datas.sourceDocGj && datas.particularsGj && datas.termDaysGj && datas.dateGj && datas.accountGj && datas.tinGj) {
+
+      generalJournal.appendRow(["=row()", datas.supplierGj, datas.amountGj, datas.sourceDocGj, datas.particularsGj, datas.termDaysGj, datas.dateGj, datas.accountGj, datas.tinGj]);
+
+    //Supplier Data Entry recieveData from JS
+    } else if (datas.tinSde && datas.nameSde && datas.addressSde && datas.registrationSde && datas.contactNoSde && datas.dateSde) {
+
+      supplierDataEntry.appendRow(["=row()", datas.tinSde, datas.nameSde, datas.addressSde, datas.registrationSde, datas.contactNoSde, datas.dateSde]);
+
+    //Customer Data Entry recieveData from JS
+    } else if (datas.tinCde && datas.nameCde && datas.addressCde && datas.registrationCde && datas.contactNoCde && datas.dateCde)  {
+
+      customerDataEntry.appendRow(["=row()", datas.tinCde, datas.nameCde, datas.addressCde, datas.registrationCde, datas.contactNoCde, datas.dateCde]);
+
+    //Sales Journal recieveData from JS
+    } else if (datas.customer && datas.sourceDoc && datas.termDays && datas.date && datas.amount && datas.type && datas.particulars && datas.discount && datas.tin) {
+
+      salesJournal.appendRow(["=row()", datas.customer, datas.sourceDoc, datas.termDays, datas.date, datas.amount, datas.type, datas.particulars, datas.discount, datas.tin]);
+
+    } else {
+      return ContentService.createTextOutput("Data is missing or incomplete");
+    }
+
+    return ContentService.createTextOutput("Data Received!");
+}

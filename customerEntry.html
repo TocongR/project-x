@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Data Entry</title>
+    <link rel="stylesheet" href="customerEntry.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/312542450_166148502693840_4233176037075043069_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeE3Npjpai4sFFDX-Cw8gH2w979Kn0cyel33v0qfRzJ6XXQgP7AkGPMJHubAL35Nu6IJCQwZ6AUSWAz-fAY3uM90&_nc_ohc=hp6iJ9hiODYQ7kNvgHOPsOR&_nc_ht=scontent.fceb2-2.fna&oh=00_AYBze5nOCu7Srqa-SFQaKBfnyKyOGHeV1OOKZqnoXh6FDA&oe=6691785E">
+</head> 
+<body> 
+   
+    <div class="whole-container">
+        
+    <div class="sidedash-container">
+        <a href="home.html">Home</a>
+        <a href="cashReceipts.html">Cash Receipts Journal</a>
+        <a href="salesJournal.html">Sales Journal</a>
+        <a href="supplierEntry.html">Supplier Data Entry</a>
+        <a href="cashDisbursement.html">Cash Disbursement Journal</a>
+        <a href="pettyCash.html">Petty Cash Journal</a>
+        <a href="generalJournal.html">General Journal</a>
+ 
+    </div>
+    <div class="right-container"> 
+        <nav class="navbar">
+            <div class="navbar-left">
+              <h2>Customer Data Entry</h2>
+            </div>
+            <div class="navbar-right">
+                <div class="timestamp" id="timestamp"></div>
+                <div class="profile">
+                   
+                    <span class="admin-name">RCube</span>
+                    <img src="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/312542450_166148502693840_4233176037075043069_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeE3Npjpai4sFFDX-Cw8gH2w979Kn0cyel33v0qfRzJ6XXQgP7AkGPMJHubAL35Nu6IJCQwZ6AUSWAz-fAY3uM90&_nc_ohc=hp6iJ9hiODYQ7kNvgHOPsOR&_nc_ht=scontent.fceb2-2.fna&oh=00_AYBze5nOCu7Srqa-SFQaKBfnyKyOGHeV1OOKZqnoXh6FDA&oe=6691785E" alt="Admin Profile" class="profile-pic">
+                </div>
+            </div>
+        </nav>
+      
+       
+    <div class="right-section">
+       
+    <form>
+        
+        <div id="search-result">
+        <label class="tin2" for="tin">TIN</label>
+        <input type="text" class="tin" name="tin" placeholder="TIN.." required>
+        <label for="name"class="nameLabel">Name</label>
+        <input type="text" class="name" name="name" placeholder='Name..' required>
+        <label for="address">Address</label>
+        <input type="text" class="address" name="address" placeholder="Address.." required>
+        <label for="registration">Registration</label>
+        <select name="registration" class="registration">
+            <option value="">Select</option>
+            <option value="Vat">Vat</option>
+            <option value="Non-Vat">Non-Vat</option>
+        </select>
+        <div class="lower-input">
+        <label for="contact">Contact No.</label>
+        <input type="tel" class="contact" name="contact" placeholder="Contact No..">
+        <label for="date" class="dateLabel">Date</label>
+        <input type="date" class="date" name="date">
+        <label for="searchID" class="searchID">ID Search</label>
+        <input type="text" name="searchID" id="searchQuery" class="search" placeholder="Search..">
+        <button class="searchbtnID" type="button" onclick=""><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="add" type="button" onclick="addData()">Submit</button>
+            <button class="update" type="button">Update</button>
+            <button class="delete" type="button">Delete</button>
+        </div>
+        </div>
+       
+        <div class="id-search">
+            <br>
+     
+    </div>
+    </form><br>
+    
+</div>
+
+    <div class="tableBg">
+    <table>
+        <div class="gen-search">
+        <input type="text" name="search" id="searchGenQuery" class="search" placeholder="Search..">
+        <button class="searchbtn" type="button" onclick="searchGenData()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="date" id="startDate" placeholder="Start Date">
+        <input type="date" id="endDate" placeholder="End Date">
+        <button class="searchDateBtn" type="button" onclick="searchDateRange()">Search</button>
+        <button class="resetTableBtn" type="button" onclick="resetTable()">Reset</button>
+    </div>
+    <div class="table-title">
+   
+    </div>
+    <thead class="upperhead">
+        <th colspan="6" class="upperhead">List of Customers</th>
+    </thead>
+        <thead>
+            <tr>
+                <th>TIN</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Registration</th>
+                <th>Contact#</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="table_data"></tbody>
+    
+    </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+   
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Please enter your password to delete this data:</p>
+            <input type="password" id="modalPassword" placeholder="Password">
+            <button  id="modalSubmit" type="button">Enter</button>
+            <div class="error-message" id="errorMessage">Incorrect password.</div>
+        </div>
+    </div>
+
+
+    <script src="customerEntry.js"></script>
+</body>
+</html>
